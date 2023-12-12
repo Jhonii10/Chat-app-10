@@ -1,11 +1,11 @@
 # Chat app 10
 
-Aplicacion de chat en tiempo real 
+Aplicacion de chat en tiempo real
 
-## Tegnologia 
+## Tegnologias
 
 - React
-- Mongodb 
+- Mongodb
 - Express
 - Nodejs
-
+- socket.io
