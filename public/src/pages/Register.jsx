@@ -1,6 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
+import { registerRoute } from '../utils/APIRoutes';
 
 
 const FormContainer = styled.div`
@@ -68,20 +72,99 @@ const FormContainer = styled.div`
       color: #4e0eff;
       text-decoration: none;
       font-weight: bold;
+      margin-left:10px
     }
   }
 `;
 
-const handleSubmit = (e)=>{
-  e.preventDefault();
-  alert('funcion el formulario');
-}
 
-const handleChange = (e)=>{
-    console.log(e.target.value);
-}
 
 const Register = () => {
+
+    const [values, setValues] = useState({
+        name:'',
+        email:'',
+        password:'',
+        confirmPassword:''
+    });
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        if (handleValidation()) {
+            console.log('validacion', registerRoute);
+            const {name , email, password} = values;
+            const {data} = await axios.post(registerRoute, {
+                name,
+                email,
+                password
+            } )
+            if (data.status === false) {
+                toast.error(data.msg, toastOptions)
+            }
+            if (data.status === true) {
+                toast.done('usuario creado', toastOptions)
+                localStorage.setItem('chat-app-user', JSON.stringify(data.user))
+            }
+
+            navigate('/')
+
+        }
+      }
+      
+      const handleChange = (e)=>{
+          setValues({...values , [e.target.name]: e.target.value})
+          
+      }
+
+      const toastOptions = {
+
+            position:'bottom-right',
+            autoClose:5000,
+            pauseOnHover:true,
+            draggable:true,
+            theme:'dark'
+    
+      }
+
+      const handleValidation = ()=>{
+
+            const {name , email, password, confirmPassword} = values;
+
+            if (!name || !email || !password || !confirmPassword) {
+                toast.error('Todos los campos son obligatorios', toastOptions);
+                return false;
+            }
+
+            if (name.length < 3) {
+                toast.error('El nombre debe tener mas de 2 caracteres',toastOptions)
+                return false
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+            toast.error('El formato del correo electrónico no es válido', toastOptions);
+            return false;
+            }
+
+            const strongPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+            if (!strongPasswordRegex.test(password)) {
+                toast.error('La contraseña debe contener al menos 6 caracteres, una letra, un número y un carácter especial.', toastOptions);
+                return false;
+            }
+
+            if(password !== confirmPassword) {
+                toast.error('Las contraseñas no coinciden',toastOptions)
+                return false
+            }
+           
+           return true
+            
+    }
+
+
+    
     return (
         <FormContainer>
             <form onSubmit={(e)=>handleSubmit(e)}>
@@ -90,10 +173,10 @@ const Register = () => {
                     <h1>JNR10</h1>
 
                 </div>
-                <input type='text' placeholder='Nombre' name='username' onChange={(e)=>handleChange(e)}/>
+                <input type='text' placeholder='Nombre' name='name' onChange={(e)=>handleChange(e)}/>
                 <input type='email' placeholder='Correo electronico' name='email' onChange={(e)=>handleChange(e)}/>
                 <input type='password' placeholder='Contraseña ' name='password' onChange={(e)=>handleChange(e)}/>
-                <input type='password' placeholder='Confirmacion de contraseña' name='password2' onChange={(e)=>handleChange(e)}/>
+                <input type='password' placeholder='Confirmacion de contraseña' name='confirmPassword' onChange={(e)=>handleChange(e)}/>
                 <button type='submit'>Crear usuario</button>
                 <span>
                     Ya tengo una cuenta 
@@ -105,6 +188,7 @@ const Register = () => {
                 </span>
 
             </form>
+            <ToastContainer />
         </FormContainer>
     );
 }
