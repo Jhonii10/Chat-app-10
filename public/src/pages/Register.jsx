@@ -93,7 +93,6 @@ const Register = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         if (handleValidation()) {
-            console.log('validacion', registerRoute);
             const {name , email, password} = values;
             const {data} = await axios.post(registerRoute, {
                 name,
@@ -106,9 +105,10 @@ const Register = () => {
             if (data.status === true) {
                 toast.done('usuario creado', toastOptions)
                 localStorage.setItem('chat-app-user', JSON.stringify(data.user))
+                navigate('/')
             }
 
-            navigate('/')
+            
 
         }
       }
@@ -180,7 +180,7 @@ const Register = () => {
                 <button type='submit'>Crear usuario</button>
                 <span>
                     Ya tengo una cuenta 
-                    <Link to={'/'}>
+                    <Link to={'/login'}>
                         <span>
                              Iniciar sesión
                         </span>
