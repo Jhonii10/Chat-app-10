@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { ToastContainer, toast } from 'react-toastify';
@@ -139,6 +139,12 @@ const Login = () => {
            return true
             
     }
+
+    useEffect(() => {
+       if (localStorage.getItem('chat-app-user')) {
+        navigate('/')
+       }
+    }, [navigate]);
 
 
     
