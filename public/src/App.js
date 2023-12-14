@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
-          <Route path='/avatar' element={<SetAvatar/>} />
+          <Route path="/setAvatar" element={<SetAvatar />} />
           <Route path='/' element={<Chat/>} />
         </Routes>
       </BrowserRouter>

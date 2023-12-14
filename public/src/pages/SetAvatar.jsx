@@ -10,11 +10,13 @@ import { setAvatarRoute } from "../utils/APIRoutes";
 
 
 const SetAvatar = () => {
+
   const api = `https://api.multiavatar.com`;
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
+  
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
