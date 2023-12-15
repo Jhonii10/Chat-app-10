@@ -92,7 +92,7 @@ const Chat = () => {
                     {
                         currentChat === undefined
                         ? <Welcome currentUser={currentUser}/>
-                        : <ChatContainer/>
+                        : <ChatContainer currentChat={currentChat}/>
                     }
                 
             </div>
