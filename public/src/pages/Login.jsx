@@ -16,17 +16,17 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #f0f2f5;
   .brand {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
     img {
-      height: 5rem;
+      height: 5rem; 
     }
     h1 {
-      color: white;
+      color: black;
       text-transform: uppercase;
     }
   }
@@ -35,25 +35,25 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #fff;
     border-radius: 2rem;
     padding: 3rem 5rem;
   }
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
+    border: 0.1rem solid #1877f2;
     border-radius: 0.4rem;
-    color: white;
+    color: black;
     width: 100%;
     font-size: 1rem;
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #559bf4;
       outline: none;
     }
   }
   button {
-    background-color: #4e0eff;
+    background-color: #1877f2;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -63,11 +63,11 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #006fff;
     }
   }
   span {
-    color: white;
+    color: black;
     text-transform: uppercase;
     a {
       color: #4e0eff;
