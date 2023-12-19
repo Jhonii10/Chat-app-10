@@ -36,7 +36,6 @@ const Chat = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
     const [currentChat, setCurrentChat] = useState(undefined);
 
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,7 +48,7 @@ const Chat = () => {
 
         }
         fetchData()
-    }, []);
+    }, [navigate]);
 
 
     useEffect(() => {
@@ -92,7 +91,7 @@ const Chat = () => {
                     {
                         currentChat === undefined
                         ? <Welcome currentUser={currentUser}/>
-                        : <ChatContainer currentChat={currentChat}/>
+                        : <ChatContainer currentChat={currentChat} currentUser={currentUser}/>
                     }
                 
             </div>
