@@ -64,7 +64,7 @@ const SetAvatar = () => {
     const fetchData = async () => {
         const data = [];
     
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -92,7 +92,7 @@ const SetAvatar = () => {
     <>
       {isLoading ? (
         <Container>
-          <img src={''} alt="loader" className="loader" />
+          <img src={'/assets/loader.gif'} alt="loader" className="loader" />
         </Container>
       ) : (
         <Container>
