@@ -95,7 +95,6 @@ module.exports.getAllUsers = async (req, res, next) => {
             "_id"
         ])
 
-        console.log(users);
 
         return res.json(users)
         
