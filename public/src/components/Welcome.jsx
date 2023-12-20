@@ -9,7 +9,7 @@ const Welcome = ({currentUser}) => {
             <h1>
                 Bienvenido <span>{currentUser?.name}</span>
             </h1>
-            <h3>Please select a chat to Start messaging.</h3>
+            <h3>Seleccione un chat para comenzar a enviar mensajes.</h3>
         </Container>
     );
 }
@@ -21,12 +21,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   flex-direction: column;
   img {
     height: 20rem;
   }
   span {
-    color: #4e0eff;
+    color: #1877f2;
   }
 `;

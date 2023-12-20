@@ -1,5 +1,8 @@
+import { Avatar, Badge, Box, IconButton, InputAdornment, ListItemButton, ListItemText, Stack, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+
+import SearchIcon from '@mui/icons-material/Search';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const Contacts = ({contacts = [] , currentUser = [] , changeChat }) => {
 
@@ -25,48 +28,115 @@ const Contacts = ({contacts = [] , currentUser = [] , changeChat }) => {
         <>
             {
                 currentUserImage && currentUserName && (
-                    <Container>
-                        <div className='brand'>
-                            <img  src='/assets/logojhoni.svg' alt='logo'/>
-                            <h3>JNR10</h3>
-                        </div>
-                        <div className='contacts'>
+                    <>
+                       <Stack sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            webkitBoxAlign: 'center',
+                            alignItems: 'center',
+                            webkitBoxPack: 'center',
+                            justifyContent: 'center',
+                            padding: '20px 20px 0px',
+                       }}>
+                        <Badge sx={{
+
+                        }}>
+
+                        <Avatar
+                            src={`data:image/svg+xml;base64,${currentUserImage}`}
+                            alt="Avatar"
+                            variant="circular"
+                            sx={{ width: 48, height: 48 }} 
+                          />
+
+                        </Badge>
+                            <Box sx={{
+                                flexGrow: 1,
+                            }}/>
+                        <IconButton
+                              size="medium"
+                              aria-label="Home"
+                            >
+                             <ArrowBackIosNewIcon/>
+                          </IconButton>
+                        
+
+                        </Stack>
+
+                        <Box sx={{
+                          padding:'0px 20px 20px',
+                        }}> 
+                        <TextField
+                          fullWidth
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <SearchIcon />
+                              </InputAdornment>
+                            ),
+                          }}
+                          placeholder="Buscar Contacto..."
+                          variant="outlined"
+                          sx={{
+                             margin:'20px 0px 0px',
+                          }}
+                        />
+                        
+                         </Box>
+                        <Box sx={{
+                          overflow: 'auto',
+                          paddingBottom: '8px',
+                        }}>
+                        
                         {
                             contacts.map((contact,index)=>(
-                                <div 
-                                    className={`contact ${index === currentSelected ? 'selected':''}`} 
+                                <ListItemButton   
+                                    sx={{
+                                      ...(index === currentSelected && {backgroundColor: 'rgba(145, 158, 171, 0.16)'})
+                                    }}
                                     key={index}
                                     onClick={() => changeCurrentChat(index, contact)}
                                     >
-                                     <div className='avatar'>
-                                        <img
-                                            src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                                            alt="avatar"
-                                        />
-                                     </div>
-                                     <div className='username'>
-                                        <h3>{contact.name}</h3>
-                                     </div>
+                                        
+                                        <Badge>
+                                          <Avatar
+                                              src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                                              alt="Avatar"
+                                              variant="circular"
+                                              sx={{ width: 48, height: 48 }} 
+                                            />
 
-                                </div>
+                                          </Badge>
+                                          <ListItemText
+                                            
+                                            primary={ 
+                                            <Typography 
+                                                component={'h6'}
+                                                variant='subtitle1'
+                                                sx={{
+                                                  textTransform:'capitalize',
+                                                  ...(index === currentSelected && {fontWeight:600})
+                                                }}
+                                              >
+                                                        {contact.name}
+                                              </Typography>}
+                                            sx={{
+                                              flex:' 1 1 auto',
+                                              minwidth: '0px',
+                                              margin: '0px 0px 0px 16px',
+
+                                            }}      
+                                            />
+                                  
+                                </ListItemButton>
                             ))
                         }
 
-                        </div>
-                        <div className='current-user'>
-                        <div className='avatar'>
-                                        <img
-                                            src={`data:image/svg+xml;base64,${currentUserImage}`}
-                                            alt="avatar"
-                                        />
-                                     </div>
-                                     <div className='username'>
-                                        <h3>{currentUserName}</h3>
-                                     </div>
-
-
-                        </div>
-                    </Container>
+                       
+                        </Box>
+                        
+                        
+                    </>
 
                 )
             }
@@ -75,91 +145,3 @@ const Contacts = ({contacts = [] , currentUser = [] , changeChat }) => {
 }
 
 export default Contacts;
-
-
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 75% 15%;
-  overflow: hidden;
-  background-color: #080420;
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    img {
-      height: 2rem;
-    }
-    h3 {
-      color: white;
-      text-transform: uppercase;
-    }
-  }
-  .contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    gap: 0.8rem;
-    &::-webkit-scrollbar {
-      width: 0.2rem;
-      &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
-    }
-    .contact {
-      background-color: #ffffff34;
-      min-height: 5rem;
-      cursor: pointer;
-      width: 90%;
-      border-radius: 0.2rem;
-      padding: 0.4rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      transition: 0.5s ease-in-out;
-      .avatar {
-        img {
-          height: 3rem;
-        }
-      }
-      .username {
-        h3 {
-          color: white;
-        }
-      }
-    }
-    .selected {
-      background-color: #9a86f3;
-    }
-  }
-
-  .current-user {
-    background-color: #0d0d30;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    .avatar {
-      img {
-        height: 4rem;
-        max-inline-size: 100%;
-      }
-    }
-    .username {
-      h2 {
-        color: white;
-      }
-    }
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
-      gap: 0.5rem;
-      .username {
-        h2 {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-`;
