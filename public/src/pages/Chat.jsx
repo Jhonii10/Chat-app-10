@@ -8,31 +8,8 @@ import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';
 import ChatContainer from '../components/ChatContainer';
 import {io} from 'socket.io-client'
-import {Box, Card, Stack} from '@mui/material'
-
-// const Container = styled.div`
-    
-//         height:100vh;
-//         width: 100vw;
-//         display:flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         gap:1rem;
-//         align-items : center;
-//         background-color: #f0f2f5;
-//         .container{
-//             height:85vh;
-//             width:85vw;
-//             background-color: red;
-//             display:grid;
-//             grid-template-columns: 25% 75%;
-//             @media screen and (min-width:720px) and (max-width:1000px){
-//                 grid-template-columns: 35% 65%;
-//             }
-//         }
-// `
-
-
+import {Box, Card, Stack} from '@mui/material';
+import ThemeProvider from '../themes';
 
 
 const Chat = () => {
@@ -96,6 +73,7 @@ const Chat = () => {
     
 
     return (
+        <ThemeProvider>
         <Box sx={{
             backgroundColor:'rgb(245, 245, 245)'
         }}>
@@ -107,7 +85,7 @@ const Chat = () => {
                 minHeight: '100%',
                 display: 'flex',
                 flexDirection:'column',
-                padding: '68px 68px',
+                padding: {xs:'28px 12px', md:'68px 68px'},
             }}
         >
         <Card 
@@ -122,28 +100,15 @@ const Chat = () => {
                 color:'rgb(33, 43, 54)',
                 transition:'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
                 borderRadius:'16px',
-                height:'82vh'
+                height:{xs:'92vh',md:'82vh'}
             }}
         >
-               <Stack 
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%',
-                    flexshrink: 0,
-                    width: '320px',
-                    borderRight: '1px solid rgba(145, 158, 171, 0.2)',
-                    transition: 'width 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-
-                }}
                
-               >
                 <Contacts 
                     contacts={contacts} 
                     currentUser={currentUser}
                     changeChat={handleChatChange}    
-                    />
-                </Stack>
+                />
 
                 <Stack sx={{
                     display: 'flex',
@@ -163,6 +128,7 @@ const Chat = () => {
         </Card>
         </Box>
         </Box>
+        </ThemeProvider>
         )
 }
 
