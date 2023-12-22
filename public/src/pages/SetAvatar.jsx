@@ -64,7 +64,7 @@ const SetAvatar = () => {
     const fetchData = async () => {
         const data = [];
     
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -135,7 +135,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 3rem;
-  background-color: #131324;
+  background-color: rgb(245, 245, 245);
   height: 100vh;
   width: 100vw;
 
@@ -145,11 +145,14 @@ const Container = styled.div`
 
   .title-container {
     h1 {
-      color: white;
+      color: black;
+      text-align: center;
     }
   }
   .avatars {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
 
     .avatar {
@@ -161,17 +164,17 @@ const Container = styled.div`
       align-items: center;
       transition: 0.5s ease-in-out;
       img {
-        height: 6rem;
+        height: 4rem;
         transition: 0.5s ease-in-out;
       }
     }
     .selected {
-      border: 0.4rem solid #4e0eff;
+      border: 0.4rem solid rgb(150, 234, 255);
     }
   }
   .submit-btn {
-    background-color: #4e0eff;
-    color: white;
+    background-color: rgb(204, 244, 254);
+    color: black ;
     padding: 1rem 2rem;
     border: none;
     font-weight: bold;
@@ -180,7 +183,7 @@ const Container = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: rgb(150, 234, 255);
     }
   }
 `;
