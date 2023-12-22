@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Settings from './Settings';
+import ScrollBar from './scrollbar/ScrollBar';
 
 const ContactHeader = ({currentUserImage, contacts, currentSelected , changeCurrentChat, handleClose , currentUserName  }) => {
     const isSmallScreen = window.innerWidth < 899;
@@ -17,7 +18,7 @@ const ContactHeader = ({currentUserImage, contacts, currentSelected , changeCurr
       };
 
     return (
-        <div>
+        <>
         <Stack sx={{
                               display: 'flex',
                               flexDirection: 'row',
@@ -84,6 +85,7 @@ const ContactHeader = ({currentUserImage, contacts, currentSelected , changeCurr
                           />
                           
                           </Box>
+                          <ScrollBar>
                           <Box sx={{
                             overflow: 'auto',
                             paddingBottom: '8px',
@@ -135,8 +137,9 @@ const ContactHeader = ({currentUserImage, contacts, currentSelected , changeCurr
 
                         
                           </Box>
+                          </ScrollBar>
             
-        </div>
+        </>
     );
 }
 

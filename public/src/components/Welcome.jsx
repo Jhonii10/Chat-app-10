@@ -23,10 +23,14 @@ const Container = styled.div`
   align-items: center;
   color: black;
   flex-direction: column;
+  min-height: 82vh;
   img {
-    height: 20rem;
+    height: 12rem;
   }
   span {
-    color: #1877f2;
+    color: rgb(204, 244, 254);
+  }
+  h3{
+    text-align: center;
   }
 `;

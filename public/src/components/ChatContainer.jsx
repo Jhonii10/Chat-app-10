@@ -135,12 +135,13 @@ const ChatContainer = ({currentChat , currentUser , socket}) => {
               height: '100%',
               overflow: 'hidden',
             }}  >
-
+            
             <Box sx={{
               overflow: 'auto',
               padding: '40px 24px',
               height:' 100%',
             }}>
+            
         {messages.map((message) => {
           return (
             

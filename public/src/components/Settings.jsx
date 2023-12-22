@@ -89,10 +89,10 @@ const Settings = ({open ,  handleCloseLogout ,  currentUserName}) => {
                 paddingLeft: '16px',
             }}  
           >
-            <option value="online">online</option>
-            <option value="alway">always</option>
-            <option value="busy">busy</option>
-            <option value="offline">offline</option>
+          <MenuItem value="online">online</MenuItem>
+          <MenuItem value="always">always</MenuItem>
+          <MenuItem value="busy">busy</MenuItem>
+          <MenuItem value="offline">offline</MenuItem>
           </Select>
 
           </MenuItem>

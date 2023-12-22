@@ -53,8 +53,8 @@ const ChatInput = ({handleSendMsg}) => {
                         '&& .EmojiPickerReact':{
                             position: 'absolute',
                             top: '-440px',    
-                            boxShadow:' 0 5px 10px #1877f2',
-                            borderColor: '#9a86f3',
+                            
+                            borderColor: 'rgba(145, 158, 171)',
                         }
                     }}>
                     <>
