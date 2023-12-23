@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URL)
     console.error(err)
 })
 
+
 const server = app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
 })
@@ -29,7 +30,7 @@ const server = app.listen(process.env.PORT, ()=>{
 
 const io = socket(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: process.env.ORIGIN,
       credentials: true,
     },
   });
