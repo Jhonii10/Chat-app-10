@@ -24,6 +24,7 @@ const ChatContainer = ({currentChat , currentUser , socket}) => {
           to : currentChat._id
   
          })
+         
          setMessages(response.data)
         
       }
