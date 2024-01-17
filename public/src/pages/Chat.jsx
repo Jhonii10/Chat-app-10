@@ -1,8 +1,6 @@
-/* eslint-disable */
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import {allUsersRoute , host} from '../utils/APIRoutes'
 import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';

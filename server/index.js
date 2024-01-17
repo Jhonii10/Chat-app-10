@@ -27,13 +27,19 @@ const server = app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
 })
 
+console.log(process.env.MONGO_URL);
+
+
 
 const io = socket(server, {
     cors: {
       origin: process.env.ORIGIN,
+
       credentials: true,
     },
+    
   });
+
   
   global.onlineUsers = new Map();
   io.on("connection", (socket) => {
