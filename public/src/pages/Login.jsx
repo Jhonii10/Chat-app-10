@@ -154,7 +154,7 @@ const Login = () => {
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div className='brand'>
                     <img src='/assets/logojhoni.svg' alt='logo'/>
-                    <h1>JNR10</h1>
+                   
 
                 </div>
                 <input type='email' placeholder='Correo electronico' name='email' onChange={(e)=>handleChange(e)}/>

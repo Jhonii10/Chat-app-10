@@ -176,7 +176,6 @@ const Register = () => {
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div className='brand'>
                     <img src='/assets/logojhoni.svg' alt='logo'/>
-                    <h1>JNR10</h1>
 
                 </div>
                 <input type='text' placeholder='Nombre' name='name' onChange={(e)=>handleChange(e)}/>
